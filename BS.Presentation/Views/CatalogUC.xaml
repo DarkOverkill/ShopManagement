@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="BS.Presentation.Views.CatalogUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <DataGrid Name="dgCatalogUC" AutoGenerateColumns="False"
+              CanUserAddRows="False"
+              CanUserDeleteRows="False"
+              ItemsSource="{Binding}">
+        <DataGrid.Columns>
+            <DataGridTextColumn Width="*"
+                                IsReadOnly="True"
+                                Header="Id"
+                                Binding="{Binding Id}" />
+            <DataGridTextColumn Width="3*" Header="Назва"
+                                Binding="{Binding Name}" />
+            <DataGridTextColumn Width="3*" Header="Виробник"
+                                Binding="{Binding Producer}" />
+            <DataGridTextColumn Width="3*" Header="Категорія"
+                                Binding="{Binding Category}" />
+            <DataGridTextColumn Width="2*" Header="Кіль."
+                                Binding="{Binding Volume}" />
+            <DataGridTextColumn Width="2*" Header="Од.вим." 
+                                Binding="{Binding VolMeasure}"/>
+            <DataGridTextColumn Width="2*" Header="Ціна" 
+                                Binding="{Binding Price}"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

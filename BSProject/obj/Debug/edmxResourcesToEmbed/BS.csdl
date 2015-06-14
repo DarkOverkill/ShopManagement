@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categoryes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" />
+    <NavigationProperty Name="Categoryes1" Relationship="Self.fk_categoryes_parentId_id" FromRole="Categoryes" ToRole="Categoryes1" />
+    <NavigationProperty Name="Categoryes2" Relationship="Self.fk_categoryes_parentId_id" FromRole="Categoryes1" ToRole="Categoryes" />
+    <NavigationProperty Name="Products" Relationship="Self.fk_product_categoryId_categoryes_id" FromRole="Categoryes" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Measures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShortName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Packeges" Relationship="Self.fk_packege_measureId_measure_id" FromRole="Measures" ToRole="Packeges" />
+    <NavigationProperty Name="Packeges1" Relationship="Self.fk_packege_volumeMeasureId_measure_id" FromRole="Measures" ToRole="Packeges" />
+  </EntityType>
+  <EntityType Name="Packeges">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="VolumeMeasureId" Type="Int32" />
+    <Property Name="MeasureId" Type="Int32" />
+    <Property Name="Volume" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Measures" Relationship="Self.fk_packege_measureId_measure_id" FromRole="Packeges" ToRole="Measures" />
+    <NavigationProperty Name="Measures1" Relationship="Self.fk_packege_volumeMeasureId_measure_id" FromRole="Packeges" ToRole="Measures" />
+    <NavigationProperty Name="Products" Relationship="Self.fk_packege_productId_product_id" FromRole="Packeges" ToRole="Products" />
+    <NavigationProperty Name="Price" Relationship="Self.fk_price_packegeId_packege_id" FromRole="Packeges" ToRole="Price" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackegeId" Type="Int32" />
+    <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Packeges" Relationship="Self.fk_price_packegeId_packege_id" FromRole="Price" ToRole="Packeges" />
+  </EntityType>
+  <EntityType Name="Producers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.fk_product_producerId_droducers_id" FromRole="Producers" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="ProducerId" Type="Int32" />
+    <NavigationProperty Name="Categoryes" Relationship="Self.fk_product_categoryId_categoryes_id" FromRole="Products" ToRole="Categoryes" />
+    <NavigationProperty Name="Packeges" Relationship="Self.fk_packege_productId_product_id" FromRole="Products" ToRole="Packeges" />
+    <NavigationProperty Name="Producers" Relationship="Self.fk_product_producerId_droducers_id" FromRole="Products" ToRole="Producers" />
+  </EntityType>
+  <Association Name="fk_categoryes_parentId_id">
+    <End Role="Categoryes" Type="Self.Categoryes" Multiplicity="0..1" />
+    <End Role="Categoryes1" Type="Self.Categoryes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoryes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Categoryes1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_product_categoryId_categoryes_id">
+    <End Role="Categoryes" Type="Self.Categoryes" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoryes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_packege_measureId_measure_id">
+    <End Role="Measures" Type="Self.Measures" Multiplicity="0..1" />
+    <End Role="Packeges" Type="Self.Packeges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Measures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Packeges">
+        <PropertyRef Name="MeasureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_packege_volumeMeasureId_measure_id">
+    <End Role="Measures" Type="Self.Measures" Multiplicity="0..1" />
+    <End Role="Packeges" Type="Self.Packeges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Measures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Packeges">
+        <PropertyRef Name="VolumeMeasureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_packege_productId_product_id">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="Packeges" Type="Self.Packeges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Packeges">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_price_packegeId_packege_id">
+    <End Role="Packeges" Type="Self.Packeges" Multiplicity="0..1" />
+    <End Role="Price" Type="Self.Price" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packeges">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Price">
+        <PropertyRef Name="PackegeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_product_producerId_droducers_id">
+    <End Role="Producers" Type="Self.Producers" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="ProducerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TestShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categoryes" EntityType="Self.Categoryes" />
+    <EntitySet Name="Measures" EntityType="Self.Measures" />
+    <EntitySet Name="Packeges" EntityType="Self.Packeges" />
+    <EntitySet Name="Price" EntityType="Self.Price" />
+    <EntitySet Name="Producers" EntityType="Self.Producers" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <AssociationSet Name="fk_categoryes_parentId_id" Association="Self.fk_categoryes_parentId_id">
+      <End Role="Categoryes" EntitySet="Categoryes" />
+      <End Role="Categoryes1" EntitySet="Categoryes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_product_categoryId_categoryes_id" Association="Self.fk_product_categoryId_categoryes_id">
+      <End Role="Categoryes" EntitySet="Categoryes" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="fk_packege_measureId_measure_id" Association="Self.fk_packege_measureId_measure_id">
+      <End Role="Measures" EntitySet="Measures" />
+      <End Role="Packeges" EntitySet="Packeges" />
+    </AssociationSet>
+    <AssociationSet Name="fk_packege_volumeMeasureId_measure_id" Association="Self.fk_packege_volumeMeasureId_measure_id">
+      <End Role="Measures" EntitySet="Measures" />
+      <End Role="Packeges" EntitySet="Packeges" />
+    </AssociationSet>
+    <AssociationSet Name="fk_packege_productId_product_id" Association="Self.fk_packege_productId_product_id">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Packeges" EntitySet="Packeges" />
+    </AssociationSet>
+    <AssociationSet Name="fk_price_packegeId_packege_id" Association="Self.fk_price_packegeId_packege_id">
+      <End Role="Packeges" EntitySet="Packeges" />
+      <End Role="Price" EntitySet="Price" />
+    </AssociationSet>
+    <AssociationSet Name="fk_product_producerId_droducers_id" Association="Self.fk_product_producerId_droducers_id">
+      <End Role="Producers" EntitySet="Producers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

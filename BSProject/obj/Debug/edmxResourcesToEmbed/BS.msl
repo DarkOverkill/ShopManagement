@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestShopModelStoreContainer" CdmEntityContainer="TestShopEntities">
+    <EntitySetMapping Name="Categoryes">
+      <EntityTypeMapping TypeName="TestShopModel.Categoryes">
+        <MappingFragment StoreEntitySet="Categoryes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Measures">
+      <EntityTypeMapping TypeName="TestShopModel.Measures">
+        <MappingFragment StoreEntitySet="Measures">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packeges">
+      <EntityTypeMapping TypeName="TestShopModel.Packeges">
+        <MappingFragment StoreEntitySet="Packeges">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="VolumeMeasureId" ColumnName="VolumeMeasureId" />
+          <ScalarProperty Name="MeasureId" ColumnName="MeasureId" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Price">
+      <EntityTypeMapping TypeName="TestShopModel.Price">
+        <MappingFragment StoreEntitySet="Price">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PackegeId" ColumnName="PackegeId" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producers">
+      <EntityTypeMapping TypeName="TestShopModel.Producers">
+        <MappingFragment StoreEntitySet="Producers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="TestShopModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ProducerId" ColumnName="ProducerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

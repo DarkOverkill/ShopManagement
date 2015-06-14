@@ -1,0 +1,10 @@
+D:\C#\BS_project\BSProject\bin\Debug\BSProject.dll.config
+D:\C#\BS_project\BSProject\bin\Debug\BSProject.dll
+D:\C#\BS_project\BSProject\bin\Debug\BSProject.pdb
+D:\C#\BS_project\BSProject\bin\Debug\EntityFramework.dll
+D:\C#\BS_project\BSProject\bin\Debug\EntityFramework.SqlServer.dll
+D:\C#\BS_project\BSProject\bin\Debug\EntityFramework.xml
+D:\C#\BS_project\BSProject\bin\Debug\EntityFramework.SqlServer.xml
+D:\C#\BS_project\BSProject\obj\Debug\BSProject.dll
+D:\C#\BS_project\BSProject\obj\Debug\BSProject.pdb
+D:\C#\BS_project\BSProject\obj\Debug\BS.Entitites.csprojResolveAssemblyReference.cache

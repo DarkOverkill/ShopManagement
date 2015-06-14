@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4269720a6574417f998a6b52f115eeb4" Name="Diagram1">
+        <EntityTypeShape EntityType="TestShopModel.Categoryes" Width="1.5" PointX="1.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShopModel.Measures" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShopModel.Packeges" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShopModel.Price" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShopModel.Producers" Width="1.5" PointX="1.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestShopModel.Products" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="TestShopModel.fk_categoryes_parentId_id" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShopModel.fk_product_categoryId_categoryes_id" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShopModel.fk_packege_measureId_measure_id" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShopModel.fk_packege_volumeMeasureId_measure_id" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShopModel.fk_packege_productId_product_id" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShopModel.fk_price_packegeId_packege_id" ManuallyRouted="false" />
+        <AssociationConnector Association="TestShopModel.fk_product_producerId_droducers_id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
